@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // [START register_for_notifications]
         if #available(iOS 10.0, *) {
-            let authOptions : UNAuthorizationOptions = [.alert, .badge, .sound]
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
-                completionHandler: {_,_ in })
+                completionHandler: {_, _ in })
             
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -34,7 +34,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]
-        
         FIRApp.configure()
         
         // Add observer for InstanceID token refresh callback.
@@ -43,8 +42,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
         
+        //register for topics - alerts -- here..
+        //[[FIRMessaging messaging] subscribeToTopic:@"/topics/alerts"];
+        FIRMessaging.messaging().subscribe(toTopic: "/topics/alerts")
+        print("Subscribed to alerts topic");
+        
         return true
     }
+    
+    
+    
+    //successful registration -- just display token
+    func application(_application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("DEVICE TOKEN = \(deviceToken)")
+    }
+    
+    //NOT successful registration -- display error
+    func application(_application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
+    }
+    
     
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
@@ -52,30 +69,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
-        
         // Print message ID.
         print("Message ID: \(userInfo["gcm.message_id"]!)")
-        
         // Print full message.
         print("%@", userInfo)
     }
     // [END receive_message]
-    
     // [START refresh_token]
     func tokenRefreshNotification(_ notification: Notification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
+            print("here \(refreshedToken)")
             print("InstanceID token: \(refreshedToken)")
         }
-        
         // Connect to FCM since connection may have failed when attempted before having a token.
+        print("Hello ass")
         connectToFcm()
+        
     }
     // [END refresh_token]
-    
     // [START connect_to_fcm]
     func connectToFcm() {
         FIRMessaging.messaging().connect { (error) in
-            if (error != nil) {
+            if error != nil {
                 print("Unable to connect with FCM. \(error)")
             } else {
                 print("Connected to FCM.")
@@ -83,11 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     // [END connect_to_fcm]
-    
     func applicationDidBecomeActive(_ application: UIApplication) {
         connectToFcm()
     }
-    
     // [START disconnect_from_fcm]
     func applicationDidEnterBackground(_ application: UIApplication) {
         FIRMessaging.messaging().disconnect()
@@ -95,11 +108,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     // [END disconnect_from_fcm]
 }
-
 // [START ios_10_message_handling]
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
-    
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
@@ -107,17 +118,14 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         // Print message ID.
         print("Message ID: \(userInfo["gcm.message_id"]!)")
-        
         // Print full message.
         print("%@", userInfo)
     }
 }
-
 extension AppDelegate : FIRMessagingDelegate {
     // Receive data message on iOS 10 devices.
     func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
         print("%@", remoteMessage.appData)
     }
 }
-
 // [END ios_10_message_handling]

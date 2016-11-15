@@ -7,15 +7,17 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseInstanceID
+import FirebaseMessaging
 
 class ViewController: UIViewController {
-
-
+    
+    
     @IBAction func ioshome(_ sender: AnyObject) {
-        print("I am here");
-        JLToast.makeText("Welcome, Version 1.01 \n Processing... Please Wait...", duration: 3).show()
+        JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
         
-        let u = "http://www.pointborohs.org/app/status.htm"
+        let u = "http://www.pointborohs.org/app/ioshome.htm"
         
         //        let requestURL = NSURL(string:url)
         //        let request = NSURLRequest(URL: requestURL!)
@@ -66,11 +68,15 @@ class ViewController: UIViewController {
         self.navigationController?.isNavigationBarHidden = true
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         
+                
+        
+        
+        
         
                 if (varView == 0){
-            JLToast.makeText("Welcome, Version 1.01 \n Processing... Please Wait...", duration: 3).show()
+            JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
             
-            let url = "http://www.pointborohs.org/app/status.htm"
+            let url = "http://www.pointborohs.org/app/ioshome.htm"
             let requestURL = URL(string:url)
             let request = URLRequest(url: requestURL!)
             webView.loadRequest(request)
@@ -212,9 +218,21 @@ class ViewController: UIViewController {
             webView.scalesPageToFit = true
             
             webView.loadRequest(request)
-            
-            
         }
+        
+        else if (varView == 10){
+            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+                    
+            let url = "http://www.pointborohs.org/app/status.htm"
+                    
+            let requestURL = URL(string:url)
+            let request = URLRequest(url: requestURL!)
+            webView.scalesPageToFit = true
+                    
+            webView.loadRequest(request)
+
+        }
+                
         
     }
 
