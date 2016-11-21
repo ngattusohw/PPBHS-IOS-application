@@ -22,9 +22,10 @@
 		AC54F17F1C91CCE400EF6EDA /* JLToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC54F17E1C91CCE400EF6EDA /* JLToastView.swift */; };
 		AC54F1811C986F7300EF6EDA /* IOSIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AC54F1801C986F7300EF6EDA /* IOSIcon.png */; };
 		C3252FDC1DBB041E008D2255 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3252FDB1DBB041E008D2255 /* Default-568h@2x.png */; };
-		C37AEA991DC2BFC200E28112 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C37AEA981DC2BFC200E28112 /* GoogleService-Info.plist */; };
-		C37AEA9A1DC2BFC200E28112 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C37AEA981DC2BFC200E28112 /* GoogleService-Info.plist */; };
-		C37AEA9B1DC2BFC200E28112 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C37AEA981DC2BFC200E28112 /* GoogleService-Info.plist */; };
+		C348BDFE1DDB7BCB00355DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C348BDFD1DDB7BCB00355DE7 /* GoogleService-Info.plist */; };
+		C348BE001DDB7BD800355DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C348BDFF1DDB7BD800355DE7 /* GoogleService-Info.plist */; };
+		C348BE011DDB7BD800355DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C348BDFF1DDB7BD800355DE7 /* GoogleService-Info.plist */; };
+		C348BE021DDB7BD800355DE7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C348BDFF1DDB7BD800355DE7 /* GoogleService-Info.plist */; };
 		D95DF425BB180972602F84A1 /* Pods_App2UITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FBF77B53FF3CD2905741863 /* Pods_App2UITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,8 +76,9 @@
 		AC54F17E1C91CCE400EF6EDA /* JLToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JLToastView.swift; sourceTree = "<group>"; };
 		AC54F1801C986F7300EF6EDA /* IOSIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IOSIcon.png; sourceTree = "<group>"; };
 		C3252FDB1DBB041E008D2255 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C348BDFD1DDB7BCB00355DE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C348BDFF1DDB7BD800355DE7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C36B16021DCF98B8002EA960 /* App2.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = App2.entitlements; sourceTree = "<group>"; };
-		C37AEA981DC2BFC200E28112 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		D19DE3B0AAC60AC240604479 /* Pods-App2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App2.release.xcconfig"; path = "Pods/Target Support Files/Pods-App2/Pods-App2.release.xcconfig"; sourceTree = "<group>"; };
 		D940FDD4481965AD8789B38D /* Pods-App2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App2.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App2/Pods-App2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,11 +194,12 @@
 		AC54F16F1C85F06400EF6EDA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C348BDFF1DDB7BD800355DE7 /* GoogleService-Info.plist */,
+				C348BDFD1DDB7BCB00355DE7 /* GoogleService-Info.plist */,
 				AC54F1721C85F0C100EF6EDA /* SWRevealViewController.m */,
 				AC54F1701C85F0AB00EF6EDA /* SWRevealViewController.h */,
 				AC54F14D1C80DE7E00EF6EDA /* Info.plist */,
 				AC54F1711C85F0C000EF6EDA /* App2-Bridging-Header.h */,
-				C37AEA981DC2BFC200E28112 /* GoogleService-Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -344,9 +347,10 @@
 			files = (
 				AC54F1491C80DE7E00EF6EDA /* Assets.xcassets in Resources */,
 				C3252FDC1DBB041E008D2255 /* Default-568h@2x.png in Resources */,
-				C37AEA991DC2BFC200E28112 /* GoogleService-Info.plist in Resources */,
+				C348BDFE1DDB7BCB00355DE7 /* GoogleService-Info.plist in Resources */,
 				AC54F1811C986F7300EF6EDA /* IOSIcon.png in Resources */,
 				AC54F1471C80DE7E00EF6EDA /* Main.storyboard in Resources */,
+				C348BE001DDB7BD800355DE7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +358,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C37AEA9A1DC2BFC200E28112 /* GoogleService-Info.plist in Resources */,
+				C348BE011DDB7BD800355DE7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,7 +366,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C37AEA9B1DC2BFC200E28112 /* GoogleService-Info.plist in Resources */,
+				C348BE021DDB7BD800355DE7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

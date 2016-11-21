@@ -146,7 +146,7 @@
         <image name="IOSIcon.png" width="100" height="100"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Evy-aS-Of2"/>
+        <segue reference="fPu-kz-5Nh"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.99001634120941162" green="0.97022348642349243" blue="0.96491873264312744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

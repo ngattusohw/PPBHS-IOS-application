@@ -4,6 +4,7 @@ import UserNotifications
 import Firebase
 import FirebaseInstanceID
 import FirebaseMessaging
+import AudioToolbox.AudioServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.registerForRemoteNotifications()
         
         // [END register_for_notifications]
+        
         FIRApp.configure()
         
         // Add observer for InstanceID token refresh callback.
@@ -42,51 +44,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                name: .firInstanceIDTokenRefresh,
                                                object: nil)
         
-        //register for topics - alerts -- here..
-        //[[FIRMessaging messaging] subscribeToTopic:@"/topics/alerts"];
-        FIRMessaging.messaging().subscribe(toTopic: "/topics/alerts")
-        print("Subscribed to alerts topic");
-        
         return true
     }
     
-    
-    
-    //successful registration -- just display token
-    func application(_application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        print("DEVICE TOKEN = \(deviceToken)")
-    }
-    
-    //NOT successful registration -- display error
-    func application(_application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        print(error)
-    }
-    
-    
     // [START receive_message]
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        // If you are receiving a notification message while your app is in the background,
+        // this callback will not be fired till the user taps on the notification launching the application.
+        // TODO: Handle data of notification
+        
+        // Print message ID.
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        // Print full message.
+        print(userInfo)
+    }
+    
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         // If you are receiving a notification message while your app is in the background,
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
+        
         // Print message ID.
         print("Message ID: \(userInfo["gcm.message_id"]!)")
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         // Print full message.
-        print("%@", userInfo)
+        print(userInfo)
     }
     // [END receive_message]
+    
     // [START refresh_token]
     func tokenRefreshNotification(_ notification: Notification) {
         if let refreshedToken = FIRInstanceID.instanceID().token() {
-            print("here \(refreshedToken)")
             print("InstanceID token: \(refreshedToken)")
         }
-        // Connect to FCM since connection may have failed when attempted before having a token.
-        print("Hello ass")
-        connectToFcm()
         
+        // Connect to FCM since connection may have failed when attempted before having a token.
+        connectToFcm()
     }
     // [END refresh_token]
+    
     // [START connect_to_fcm]
     func connectToFcm() {
         FIRMessaging.messaging().connect { (error) in
@@ -98,9 +97,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     // [END connect_to_fcm]
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unable to register for remote notifications: \(error.localizedDescription)")
+    }
+    
+    // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
+    // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
+    // the InstanceID token.
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNs token retrieved: \(deviceToken)")
+        
+        // With swizzling disabled you must set the APNs token here.
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
+        FIRMessaging.messaging().subscribe(toTopic: "/topics/iosalerts")
+        print("Subscribed to iosalerts topic");
+    }
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         connectToFcm()
     }
+    
     // [START disconnect_from_fcm]
     func applicationDidEnterBackground(_ application: UIApplication) {
         FIRMessaging.messaging().disconnect()
@@ -108,9 +125,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     // [END disconnect_from_fcm]
 }
+
 // [START ios_10_message_handling]
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
+    
     // Receive displayed notifications for iOS 10 devices.
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
@@ -118,14 +137,29 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         let userInfo = notification.request.content.userInfo
         // Print message ID.
         print("Message ID: \(userInfo["gcm.message_id"]!)")
+        
         // Print full message.
-        print("%@", userInfo)
+        print(userInfo)
     }
-}
-extension AppDelegate : FIRMessagingDelegate {
-    // Receive data message on iOS 10 devices.
-    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
-        print("%@", remoteMessage.appData)
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        print("Message ID: \(userInfo["gcm.message_id"]!)")
+        
+        // Print full message.
+        print(userInfo)
     }
 }
 // [END ios_10_message_handling]
+
+// [START ios_10_data_message_handling]
+extension AppDelegate : FIRMessagingDelegate {
+    // Receive data message on iOS 10 devices while app is in the foreground.
+    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
+}
+// [END ios_10_data_message_handling]
