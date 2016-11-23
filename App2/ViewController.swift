@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseInstanceID
-import FirebaseMessaging
 
 class ViewController: UIViewController {
     
     
     @IBAction func ioshome(_ sender: AnyObject) {
-        JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
+        print("I am here");
+        JLToast.makeText("Welcome, Version 1.01 \n Processing... Please Wait...", duration: 3).show()
         
         let u = "http://www.pointborohs.org/app/ioshome.htm"
         
@@ -25,31 +23,32 @@ class ViewController: UIViewController {
         let request = URLRequest(url: url!);
         webView.loadRequest(request);
         webView.scalesPageToFit = false
+        
     }
-
-
-//    @IBAction func ioshome(_ sender: UIButton) {
-//        
-////        ioshome.target = self.revealViewController()
-////        ioshome.action = Selector("revealToggle:")
-//        print("I am here");
-//        JLToast.makeText("Welcome, Version 1.01 \n Processing... Please Wait...", duration: 3).show()
-//        
-//        let u = "http://www.pointborohs.org/app/ioshome.htm"
-//        
-////        let requestURL = NSURL(string:url)
-////        let request = NSURLRequest(URL: requestURL!)
-//        let url =  URL(string:u);
-//        let request = URLRequest(url: url!);
-//        webView.loadRequest(request);
-//        webView.scalesPageToFit = false
-//        
-//        
-//    }
-
+    
+    
+    //    @IBAction func ioshome(_ sender: UIButton) {
+    //
+    ////        ioshome.target = self.revealViewController()
+    ////        ioshome.action = Selector("revealToggle:")
+    //        print("I am here");
+    //        JLToast.makeText("Welcome, Version 1.01 \n Processing... Please Wait...", duration: 3).show()
+    //
+    //        let u = "http://www.pointborohs.org/app/ioshome.htm"
+    //
+    ////        let requestURL = NSURL(string:url)
+    ////        let request = NSURLRequest(URL: requestURL!)
+    //        let url =  URL(string:u);
+    //        let request = URLRequest(url: url!);
+    //        webView.loadRequest(request);
+    //        webView.scalesPageToFit = false
+    //
+    //
+    //    }
+    
     @IBOutlet weak var webView: UIWebView!
-
-
+    
+    
     
     var varView = Int()
     
@@ -58,14 +57,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.automaticallyAdjustsScrollViewInsets = false
+        
+        
         self.view.backgroundColor = UIColor.black
         // Do any additional setup after loading the view, typically from a nib.
         
-                
+        
         self.navigationController?.isNavigationBarHidden = true
         self.view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
-        
-        
         
         
         if (varView == 0){
@@ -80,7 +79,7 @@ class ViewController: UIViewController {
         }
             
         else if (varView == 1){
-           
+            
             JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             let url = "http://www.pointborohs.org/app/ma.php"
             
@@ -91,7 +90,7 @@ class ViewController: UIViewController {
             
             
         }
-        
+            
         else if (varView == 2){
             
             JLToast.makeText("Processing... Please Wait...", duration: 3).show()
@@ -116,8 +115,8 @@ class ViewController: UIViewController {
         }
 
         else if (varView == 4){
-             JLToast.makeText("BITS, Version 1.01 \n Processing... Please Wait...", delay: JLToastDelay.ShortDelay, duration: 3).show()
-             //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            JLToast.makeText("BITS, Version 1.01 \n Processing... Please Wait...", delay: JLToastDelay.ShortDelay, duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let currentDate = Date()
             let dateFormatter = DateFormatter()
@@ -138,7 +137,7 @@ class ViewController: UIViewController {
             webView.loadRequest(request)
             webView.scalesPageToFit = true
         }
-        
+            
         else if (varView == 5){
             
             JLToast.makeText("Processing... Please Wait...", duration: 3).show()
@@ -149,7 +148,7 @@ class ViewController: UIViewController {
             let request = URLRequest(url: requestURL!)
             webView.loadRequest(request)
         }
-        
+            
         else if (varView == 6){
             
             JLToast.makeText("Processing... Please Wait...", duration: 3).show()
@@ -160,7 +159,7 @@ class ViewController: UIViewController {
             let request = URLRequest(url: requestURL!)
             webView.loadRequest(request)
         }
-        
+            
         else if (varView == 7){
             
             JLToast.makeText("Processing... Please Wait...", duration: 3).show()
@@ -188,7 +187,7 @@ class ViewController: UIViewController {
             
             
         }
-        
+
         else if (varView == 9){
             
             JLToast.makeText("Processing... Please Wait...", duration: 3).show()
@@ -198,10 +197,11 @@ class ViewController: UIViewController {
             let requestURL = URL(string:url)
             let request = URLRequest(url: requestURL!)
             webView.scalesPageToFit = true
-            print("Here")
+            
             webView.loadRequest(request)
+            
+            
         }
-
 
             
         else if (varView == 10){
@@ -217,25 +217,26 @@ class ViewController: UIViewController {
             webView.loadRequest(request)
         }
         
-            
-            
         else if (varView == 11){
-            JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
             
+            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             let url = "http://www.pointborohs.org/app/status.htm"
+            
             let requestURL = URL(string:url)
             let request = URLRequest(url: requestURL!)
+            webView.scalesPageToFit = true
+            
             webView.loadRequest(request)
-
         }
-                
+            
+            
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
-
 
