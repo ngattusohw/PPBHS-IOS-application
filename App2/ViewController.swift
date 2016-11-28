@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBAction func ioshome(_ sender: AnyObject) {
         print("I am here");
-        JLToast.makeText("Welcome, Version 1.01 \n Processing... Please Wait...", duration: 3).show()
+        JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
         
         let u = "http://www.pointborohs.org/app/ioshome.htm"
         
@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         let request = URLRequest(url: url!);
         webView.loadRequest(request);
         webView.scalesPageToFit = false
-        
+
     }
     
     
