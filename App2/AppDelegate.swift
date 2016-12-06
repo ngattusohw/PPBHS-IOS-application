@@ -54,11 +54,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // TODO: Handle data of notification
         
         // Print message ID.
-        print("Message ID: \(userInfo["gcm.message_id"]!)")
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        
+        
+       
         // Print full message.
         print(userInfo)
     }
+    
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
@@ -68,8 +70,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Print message ID.
         print("Message ID: \(userInfo["gcm.message_id"]!)")
-        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         // Print full message.
         print(userInfo)
     }
@@ -124,7 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("Disconnected from FCM.")
     }
     // [END disconnect_from_fcm]
+    
+    
 }
+
+
+
 
 // [START ios_10_message_handling]
 @available(iOS 10, *)
@@ -139,7 +144,19 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         print("Message ID: \(userInfo["gcm.message_id"]!)")
         
         // Print full message.
-        print(userInfo)
+        print("FORE GROUND NOTIFICATION CALLED ///////");
+        
+        completionHandler(
+            [UNNotificationPresentationOptions.alert,
+             UNNotificationPresentationOptions.sound,
+             UNNotificationPresentationOptions.badge])
+        
+        for _ in 1...5 {
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            sleep(1)
+        }
+        
+        
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,
@@ -151,6 +168,9 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         
         // Print full message.
         print(userInfo)
+        
+        
+        
     }
 }
 // [END ios_10_message_handling]
