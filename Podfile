@@ -8,7 +8,7 @@ target 'App2' do
   # Pods for App2
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
-  pod 'FirebaseMessaging', '2.0.0'
+  pod 'FirebaseMessaging' , '2.0.0'
 
   target 'App2Tests' do
     inherit! :search_paths

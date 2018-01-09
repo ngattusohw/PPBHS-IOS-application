@@ -46,10 +46,10 @@ public let JLToastViewLandscapeOffsetYAttributeName = "JLToastViewLandscapeOffse
             JLToastViewBackgroundColorAttributeName,
             forUserInterfaceIdiom: userInterfaceIdiom
             ) as? UIColor
-        self.backgroundView.layer.cornerRadius = type(of: self).defaultValueForAttributeName(
-            JLToastViewCornerRadiusAttributeName,
-            forUserInterfaceIdiom: userInterfaceIdiom
-            ) as! CGFloat
+//        self.backgroundView.layer.cornerRadius = type(of: self).defaultValueForAttributeName(
+//            JLToastViewCornerRadiusAttributeName,
+//            forUserInterfaceIdiom: userInterfaceIdiom
+//            ) as! CGFloat
         self.backgroundView.clipsToBounds = true
         self.addSubview(self.backgroundView)
         

@@ -33,7 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-        
         // [END register_for_notifications]
         
         FIRApp.configure()
@@ -109,7 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
-        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: FIRInstanceIDAPNSTokenType.sandbox)
+        FIRInstanceID.instanceID().setAPNSToken(deviceToken, type: .sandbox)
         FIRMessaging.messaging().subscribe(toTopic: "/topics/iosalerts")
         print("Subscribed to iosalerts topic");
     }

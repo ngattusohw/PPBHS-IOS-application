@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     @IBAction func ioshome(_ sender: AnyObject) {
         print("I am here");
-        JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
+        //JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
         
         let u = "http://www.pointborohs.org/app/ioshome.htm"
         
@@ -68,7 +68,7 @@ class ViewController: UIViewController {
         
         
         if (varView == 0){
-            JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Welcome, Version 2.0G \n Processing... Please Wait...", duration: 3).show()
             
             let url = "http://www.pointborohs.org/app/ioshome.htm"
             let requestURL = URL(string:url)
@@ -80,7 +80,7 @@ class ViewController: UIViewController {
             
         else if (varView == 1){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             let url = "http://www.pointborohs.org/app/ma.php"
             
             let requestURL = URL(string:url)
@@ -93,7 +93,7 @@ class ViewController: UIViewController {
             
         else if (varView == 2){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+           // JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "http://www.pointborohs.org/app/ppcal.htm"
             
@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         
         else if (varView == 3){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "http://www.pointborohs.org/app/ppcalfull.htm"
             
@@ -115,7 +115,7 @@ class ViewController: UIViewController {
         }
 
         else if (varView == 4){
-            JLToast.makeText("BITS, Version 1.01 \n Processing... Please Wait...", delay: JLToastDelay.ShortDelay, duration: 3).show()
+            //JLToast.makeText("BITS, Version 1.01 \n Processing... Please Wait...", delay: JLToastDelay.ShortDelay, duration: 3).show()
             //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let currentDate = Date()
@@ -140,7 +140,7 @@ class ViewController: UIViewController {
             
         else if (varView == 5){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "http://www.pointborohs.org/app/TownFood.html"
             
@@ -151,7 +151,7 @@ class ViewController: UIViewController {
             
         else if (varView == 6){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "https://parents.pointpleasant.k12.nj.us/genesis/parents?tab1=studentdata&tab2=gradebook&tab3=weeklysummary&action=form&studentid=16055102"
             
@@ -162,7 +162,7 @@ class ViewController: UIViewController {
             
         else if (varView == 7){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+           // JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "https://connection.naviance.com/family-connection/auth/login/?hsid=pointphs"
             
@@ -174,7 +174,7 @@ class ViewController: UIViewController {
         
         else if (varView == 8){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let base = "http://www.pointborohs.org/app/sch.pdf"
             let url = "https://docs.google.com/gview?embedded=true&url=" + base
@@ -190,7 +190,7 @@ class ViewController: UIViewController {
 
         else if (varView == 9){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "http://www.pointborohs.org/app/ioslinks.htm"
             
@@ -206,7 +206,7 @@ class ViewController: UIViewController {
             
         else if (varView == 10){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             
             let url = "http://www.pointborohs.org/app/iosabout.htm"
             
@@ -219,7 +219,7 @@ class ViewController: UIViewController {
         
         else if (varView == 11){
             
-            JLToast.makeText("Processing... Please Wait...", duration: 3).show()
+            //JLToast.makeText("Processing... Please Wait...", duration: 3).show()
             let url = "http://www.pointborohs.org/app/status.htm"
             
             let requestURL = URL(string:url)
